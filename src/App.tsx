@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css'
 import CountryModel from './model/CountryModel';
 import Country from './components/Country';
+import './components/country.css'
 
 function App() {
   const [countries, setCountries] = useState<string>('');
