@@ -14,7 +14,6 @@
     padding: 20px;
     margin: 10px;
     transition: all .3s ease-in-out;
-    cursor: pointer;
 }
 
 .country-card:hover {
@@ -28,4 +27,8 @@
     height: auto;
     margin-right: 20px;
     border-radius: 5px;
+}
+
+.country-details a {
+    cursor: pointer;
 }
