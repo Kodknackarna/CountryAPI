@@ -30,6 +30,7 @@ function App() {
     .then(response => {
       console.log(response.data)
       const transformedData = transformToCountryModel(response.data);
+      transformedData.sort((a, b) => a.name.localeCompare(b.name));
       setDataList(transformedData)
       setCountries('') //rensar datan
     })
@@ -40,6 +41,7 @@ function App() {
     axios.get(`https://restcountries.com/v3.1/name/${inputValue}`)
     .then(response => {
       const transformedData = transformToCountryModel(response.data);
+      transformedData.sort((a, b) => a.name.localeCompare(b.name));
       setDataList(transformedData)
     })
   }, [inputValue]);
