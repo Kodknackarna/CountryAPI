@@ -12,7 +12,7 @@ function Search ({
 
     return (
         <section>
-      <button onClick={onSearchCountries} className="button">Countries</button>
+      <button onClick={onSearchCountries} className="button">All countries</button>
       <input
         type="text"
         placeholder="country name"
