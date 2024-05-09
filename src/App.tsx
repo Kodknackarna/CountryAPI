@@ -62,11 +62,11 @@ function App() {
 
   return (
     <div>
-    <section>
-      <button onClick={ () => setCountries('all') } className="button">All countries</button>
-      <input type="Text" placeholder='countryname' className='searchTerm' value={inputValue}
-             onChange={(e) => setInputValue(e.target.value)}></input>
-    </section>
+    <Search
+    inputValue={inputValue}
+    onInputChange={handleInputChange}
+    onSearchCountries={handleSearchCountries}
+    />
     <Country countries={dataList}/>
   </div>
   )
