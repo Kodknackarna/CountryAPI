@@ -4,6 +4,8 @@ import './App.css'
 import CountryModel from './model/CountryModel';
 import Country from './components/Country';
 import './components/country.css'
+import Search from './components/Search'
+
 
 function App() {
   const [countries, setCountries] = useState<string>('');
@@ -23,6 +25,14 @@ function App() {
       }
     });
   }
+
+  const handleInputChange = (newValue: string) => {
+    setInputValue(newValue);
+  };
+
+  const handleSearchCountries = () => {
+    setCountries('all');
+  };
 
 //API anrop för att ta fram alla länder
   useEffect(() => {
