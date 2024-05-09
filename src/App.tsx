@@ -53,7 +53,7 @@ function App() {
   return (
     <div>
     <section>
-      <button onClick={ () => setCountries('all') } className="button">Countries</button>
+      <button onClick={ () => setCountries('all') } className="button">All countries</button>
       <input type="Text" placeholder='countryname' className='searchTerm' value={inputValue}
              onChange={(e) => setInputValue(e.target.value)}></input>
     </section>
