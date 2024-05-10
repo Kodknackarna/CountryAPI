@@ -34,27 +34,30 @@ function App() {
     setCountries('all');
   };
 
-//API anrop för att ta fram alla länder
+  //funktion som returnerar API url:en ner till useEffect
+  function getUrl() {
+    if (inputValue.trim() !== '') { //kollar så inputvalue inte är tom
+      return `https://restcountries.com/v3.1/name/${inputValue}`;
+    } else if (countries === 'all') {
+      return 'https://restcountries.com/v3.1/all';
+    }
+    return null; //returnerar null om inga villkor är uppfyllda
+  }
+  
   useEffect(() => {
-    axios.get(`https://restcountries.com/v3.1/${countries}`)
-    .then(response => {
-      console.log(response.data)
-      const transformedData = transformToCountryModel(response.data);
-      transformedData.sort((a, b) => a.name.localeCompare(b.name));
-      setDataList(transformedData)
-      setCountries('') //rensar datan
-    })
-  }, [countries]);
-
-//API anrop för söka på specifika länder
-  useEffect(() => {
-    axios.get(`https://restcountries.com/v3.1/name/${inputValue}`)
-    .then(response => {
-      const transformedData = transformToCountryModel(response.data);
-      transformedData.sort((a, b) => a.name.localeCompare(b.name));
-      setDataList(transformedData)
-    })
-  }, [inputValue]);
+    const url = getUrl();
+    if (url) { //kontrollerar så att url:en inte är null
+      axios.get(url)
+        .then(response => {
+          const transformedData = transformToCountryModel(response.data);
+          transformedData.sort((a, b) => a.name.localeCompare(b.name));
+          setDataList(transformedData);
+          if (countries === 'all') {
+            setCountries(''); //rensar countries om alla länder har hämtats
+          }
+        });
+    }
+  }, [inputValue, countries]);
 
   useEffect(() => {
     console.log(dataList);
